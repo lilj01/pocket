@@ -1,1 +1,3 @@
-<view class="container">home</view>
+<view class="container">
+    <image class="top-theme" src="{{entrance_img}}" />
+</view>
