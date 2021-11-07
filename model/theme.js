@@ -4,7 +4,7 @@ import { Http } from "../utils/http";
 class Theme{
 
     /*获取首页位置A的主题信息 */
-    static async getHomeLocationA () {
+    static async getHomeLocationA() {
        return await Http.request({
             url: `theme/by/names`,
             data: {

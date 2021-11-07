@@ -1,0 +1,18 @@
+{
+  "name": "pocket",
+  "version": "0.1.0",
+  "description": "pocket-wxapp",
+  "main": "app.js",
+  "dependencies": {
+    "lin-ui": "~0.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:bclz_xc/pocket.git"
+  },
+  "author": "lilj_01",
+  "license": "ISC"
+}
