@@ -16,5 +16,6 @@
     <!-- 自定义六宫格组件 -->
     <s-category-grid grid="{{grid}}" />
 
+    <!-- 活动、优惠卷入口 -->
     <image class="activity" src="{{activityD.entrance_img}}" />
 </view>
