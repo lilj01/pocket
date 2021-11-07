@@ -7,24 +7,25 @@
     justify-content: center;
 }
 
+/**六宫格样式*/
 .inner-container{
     width: 730rpx;
     height: 300rpx;
     border: 1px dashed #DCEBE6;
 }
-
+/**六宫格子元素样式*/
 .grid-item{
     width: 200rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+/**六宫格子元素图片样式*/
 .img{
     width: 60rpx;
     height: 60rpx;
 }
-
+/**六宫格子元素文字样式*/
 .text{
     margin-top: 6rpx;
     font-size: 24rpx;

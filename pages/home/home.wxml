@@ -15,4 +15,6 @@
     </swiper>
     <!-- 自定义六宫格组件 -->
     <s-category-grid grid="{{grid}}" />
+
+    <image class="activity" src="{{activityD.entrance_img}}" />
 </view>
