@@ -1,6 +1,7 @@
 <view>
     <!-- 位置A的图 -->
     <image class="top-theme" src="{{themeA.entrance_img}}" />
+    <!-- banner轮播 -->
     <swiper class="swiper"
     indicator-dots
     indicator-active-color="#157658"
@@ -12,4 +13,6 @@
             </swiper-item>
         </block>
     </swiper>
+    <!-- 自定义六宫格组件 -->
+    <s-category-grid grid="{{grid}}" />
 </view>
