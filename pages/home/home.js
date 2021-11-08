@@ -7,6 +7,7 @@ Page({
     data: {
         /**主题 位置A */
         themeA: null,
+        themeE:null,
         /**轮播 位置B */
         bannerB: null,
         /**六宫格 位置C */
@@ -22,8 +23,13 @@ Page({
 
     /*加载首页需要的数据 */
     async initAllData() {
+       /**通过面向对象的思想，合并http请求，此处需要实例化Theme对象 */
+        const themeModel = new Theme()
+        await themeModel.getThemes()
         /*位置A的图信息 */
-        const themeA  = await Theme.getHomeLocationA()
+        const themeA = await themeModel.getHomeLocationA()
+        /*位置E的图信息 */
+        const themeE = await themeModel.getHomeLocationE()
         /*banner图信息 */
         const bannerB = await Banner.getHomeLocationB()
         /*获取六宫格信息 */
@@ -31,8 +37,9 @@ Page({
         /**获取活动信息  */
         const activityD = await Activity.getLocationD()
         this.setData({
-            themeA: themeA[0],
-            bannerB:bannerB,
+            themeA,
+            themeE,
+            bannerB,
             grid,
             activityD
         })
