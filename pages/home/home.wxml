@@ -18,4 +18,11 @@
 
     <!-- 活动、优惠卷入口 -->
     <image class="activity" src="{{activityD.entrance_img}}" />
+
+    <!-- 横屏滚动的spu信息 -->
+    <s-spu-scroll
+    wx:if="{{themeE.online}}"
+    theme="{{themeE}}"
+    spu-list="{{themeESpus}}"
+    />
 </view>

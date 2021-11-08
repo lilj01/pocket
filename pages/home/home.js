@@ -30,6 +30,8 @@ Page({
         const themeA = await themeModel.getHomeLocationA()
         /*位置E的图信息 */
         const themeE = await themeModel.getHomeLocationE()
+        /**E位置的详情及spu信息 */
+        const themeESpu = Theme.getHomeLocationESpu()
         /*banner图信息 */
         const bannerB = await Banner.getHomeLocationB()
         /*获取六宫格信息 */
@@ -39,6 +41,7 @@ Page({
         this.setData({
             themeA,
             themeE,
+            themeESpu,
             bannerB,
             grid,
             activityD

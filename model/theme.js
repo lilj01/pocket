@@ -36,6 +36,18 @@ class Theme{
         return await this.themes.find(t => t.name === themeName)
     }
 
+    /**获取E位置的主题详情及spu信息 */
+    static getHomeLocationESpu() {
+        return Theme.getThemeSpuByName(Theme.locationE)
+    }
+
+    /**获取主题详情，包含sku信息 */
+    static getThemeSpuByName(name) {
+        return Http.request({
+            url: `theme/name/${name}/with_spu`
+        })
+    }
+
 }
 
 export { Theme }
