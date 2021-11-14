@@ -1,6 +1,7 @@
 import { Activity } from '../../model/activity.js'
 import { Banner } from '../../model/banner.js'
 import { Category } from '../../model/category.js'
+import { SpuPaging } from '../../model/spu-paging.js'
 import { Theme } from '../../model/theme.js'
 Page({
 
@@ -21,6 +22,7 @@ Page({
     /* 生命周期函数 onLoad*/
     async onLoad() {
        this.initAllData()
+       this.initBottomSpuList()
     },
 
     /*加载首页需要的数据 */
@@ -68,6 +70,15 @@ Page({
             bannerG,
             themeH
         })
+    },
+
+    /*加载底部spuList */
+    async initBottomSpuList() {
+        const spuPaging = await SpuPaging.getLatestPaging()
+        const data = spuPaging.getMoreData()
+        if (!data) {
+            return
+        }
     }
 
 })

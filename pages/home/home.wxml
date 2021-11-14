@@ -32,6 +32,13 @@
     <!--G 热卖榜单区域 -->
     <s-hot-list banner="{{bannerG}}" />
 
-    <!-- 主题F区域信息 -->
+    <!-- 主题H区域信息 -->
     <image class="fashion" src="{{themeH.entrance_img}}" />
+
+    <!--I 推荐信息,瀑布流 -->
+    <view class="spu-bottom">
+        <!-- 静态图片 -->
+        <image class="title-spu-bottom" src="/imgs/home/title@interest.png" />
+        <l-water-flow generic:l-water-flow-item="" />
+    </view>
 </view>
