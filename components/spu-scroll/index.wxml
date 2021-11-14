@@ -9,9 +9,11 @@
             <block wx:for="{{spuList}}" wx:key="id">
                 <view class="spu-container">
                     <image class="spu-img" src="{{item.img}}"/>
+                    <!-- 使用lin-ui过滤器，wxs -->
                     <text class="spu-text">
                         {{item.title.length>=8?s.substring(item.title,0,7)+'...':item.title}}
                     </text>
+                    <!-- lin-ui价格组件 -->
                     <l-price
                     value="{{item.price}}"
                     l-value-class="price-value"

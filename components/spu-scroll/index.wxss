@@ -1,46 +1,54 @@
+/* 外容器 */
 .container{
     padding: 42rpx 0 34rpx 28rpx;
 }
 
+/* theme标题图片 */
 .title{
     width: 694rpx;
     height: 90rpx;
 }
 
+/* 价格组件说明 */
 .price-unit{
     font-size: 24rpx !important;
     color: #157658 !important;
 }
 
+/* 价格的值 */
 .price-value{
     font-size: 26rpx !important;
     font-weight: 800 !important;
     color: #157658 !important;
 }
 
+/* 滚动容器 */
 .scroll-container{
     margin-top: 28rpx;
     display: flex;
     flex-direction: row;
 }
 
+/* 解决滚动组件下方拉伸的问题  添加一个view标签*/
 .inner{
     display: flex;
     flex-direction: row;
 }
 
+/*spu信息容器*/
 .spu-container{
     margin-right: 60rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+/* spu图片 */
 .spu-img{
     width: 160rpx;
     height: 160rpx;
 }
 
+/* spu文字 */
 .spu-text{
     font-size: 20rpx;
     color: #666666;
