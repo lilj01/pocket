@@ -9,6 +9,7 @@ Page({
         themeA: null,
         themeE:null,
         themeESpu:null,
+        themeF:null,
         /**轮播 位置B */
         bannerB: null,
         /**六宫格 位置C */
@@ -29,9 +30,18 @@ Page({
         await themeModel.getThemes()
         /*位置A的图信息 */
         const themeA = await themeModel.getHomeLocationA()
+
+        /*banner图信息 */
+        const bannerB = await Banner.getHomeLocationB()
+        /*获取六宫格信息 */
+        const grid = await Category.getLocationC()
+        /**获取活动信息  */
+        const activityD = await Activity.getLocationD()
+
         /*位置E的图信息 */
         const themeE = await themeModel.getHomeLocationE()
-          /**E位置的详情及spu信息 */
+        
+        /**E位置的详情及spu信息 */
         let themeESpu = []
         if (themeE.online) {
             const data = await Theme.getHomeLocationESpu()
@@ -39,19 +49,24 @@ Page({
                 themeESpu =  data.spu_list.slice(0,8)
             }
         }       
-        /*banner图信息 */
-        const bannerB = await Banner.getHomeLocationB()
-        /*获取六宫格信息 */
-        const grid = await Category.getLocationC()
-        /**获取活动信息  */
-        const activityD = await Activity.getLocationD()
+
+        /**位置F的信息 */
+        const themeF = await themeModel.getHomeLocationF()
+        /**位置G的信息 */
+        const bannerG = await Banner.getHomeLocationG()
+        /**位置H的信息 */
+        const themeH = await themeModel.getHomeLocationH()
+
         this.setData({
             themeA,
-            themeE,
-            themeESpu,
             bannerB,
             grid,
-            activityD
+            activityD,
+            themeE,
+            themeESpu,
+            themeF,
+            bannerG,
+            themeH
         })
     }
 

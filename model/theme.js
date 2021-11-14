@@ -31,15 +31,27 @@ class Theme{
         return this.getThemeByName(Theme.locationE)
     }
 
+    /**获取E位置的主题详情及spu信息 */
+    static getHomeLocationESpu() {
+        return Theme.getThemeSpuByName(Theme.locationE)
+    }
+
+    /*获取首页位置F的主题信息 */
+    async getHomeLocationF() {
+        return this.getThemeByName(Theme.locationF)
+    }
+
+    /*获取首页位置H的主题信息 */
+    async getHomeLocationH() {
+        return this.getThemeByName(Theme.locationH)
+    }
+
     /**通过主题名称遍历获取 */
     async getThemeByName(themeName) {
         return await this.themes.find(t => t.name === themeName)
     }
 
-    /**获取E位置的主题详情及spu信息 */
-    static getHomeLocationESpu() {
-        return Theme.getThemeSpuByName(Theme.locationE)
-    }
+
 
     /**获取主题详情，包含sku信息 */
     static getThemeSpuByName(name) {

@@ -1,7 +1,7 @@
 <view>
     <!-- 位置A的图 -->
     <image class="top-theme" src="{{themeA.entrance_img}}" />
-    <!-- banner轮播 -->
+    <!--B banner轮播 -->
     <swiper class="swiper"
     indicator-dots
     indicator-active-color="#157658"
@@ -13,16 +13,25 @@
             </swiper-item>
         </block>
     </swiper>
-    <!-- 自定义六宫格组件 -->
+    <!--C 自定义六宫格组件 -->
     <s-category-grid grid="{{grid}}" />
 
-    <!-- 活动、优惠卷入口 -->
+    <!--D 活动、优惠卷入口 -->
     <image class="activity" src="{{activityD.entrance_img}}" />
 
-    <!-- 横屏滚动的spu信息 -->
+    <!--E 横屏滚动的spu信息 -->
     <s-spu-scroll
     theme="{{themeE}}"
     spu-list="{{themeESpu}}"
     wx:if="{{themeE.online}}"
     />
+
+    <!-- 主题F区域信息 -->
+    <image class="quality" src="{{themeF.entrance_img}}" />
+
+    <!--G 热卖榜单区域 -->
+    <s-hot-list banner="{{bannerG}}" />
+
+    <!-- 主题F区域信息 -->
+    <image class="fashion" src="{{themeH.entrance_img}}" />
 </view>

@@ -1,0 +1,41 @@
+/* 容器 */
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40rpx;
+    background-color: #ffffff;
+}
+
+/* 标题图片 */
+.title{
+    width: 690rpx;
+    height: 90rpx;
+}
+
+.inner-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 30rpx;
+}
+
+.img-left{
+    display: flex;
+    width: 346rpx;
+    height: 522rpx;
+}
+
+.img-right-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.right-size{
+    display: flex;
+    width: 400rpx;
+    height: 260rpx;
+}
