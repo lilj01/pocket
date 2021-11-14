@@ -1,2 +1,24 @@
-<!--components/spu-scroll/index.wxml-->
-<text>components/spu-scroll/index.wxml</text>
+<!-- 引入wxs -->
+<wxs src="../../miniprogram_npm/lin-ui/filter/string.wxs" module="s"/>
+<view class="container">
+    <!-- 图片 -->
+    <image src="{{theme.title_img}}" class="title" />
+    <!-- 滚动图 小程序提供的组件 scroll-view-->
+    <scroll-view scroll-x class="scroll-container">
+        <view class="inner">
+            <block wx:for="{{spuList}}" wx:key="id">
+                <view class="spu-container">
+                    <image class="spu-img" src="{{item.img}}"/>
+                    <text class="spu-text">
+                        {{item.title.length>=8?s.substring(item.title,0,7)+'...':item.title}}
+                    </text>
+                    <l-price
+                    value="{{item.price}}"
+                    l-value-class="price-value"
+                    l-unit-class="price-unit"
+                    />
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+</view>

@@ -8,6 +8,7 @@ Page({
         /**主题 位置A */
         themeA: null,
         themeE:null,
+        themeESpu:null,
         /**轮播 位置B */
         bannerB: null,
         /**六宫格 位置C */
@@ -30,8 +31,14 @@ Page({
         const themeA = await themeModel.getHomeLocationA()
         /*位置E的图信息 */
         const themeE = await themeModel.getHomeLocationE()
-        /**E位置的详情及spu信息 */
-        const themeESpu = Theme.getHomeLocationESpu()
+          /**E位置的详情及spu信息 */
+        let themeESpu = []
+        if (themeE.online) {
+            const data = await Theme.getHomeLocationESpu()
+            if (data) {
+                themeESpu =  data.spu_list.slice(0,8)
+            }
+        }       
         /*banner图信息 */
         const bannerB = await Banner.getHomeLocationB()
         /*获取六宫格信息 */

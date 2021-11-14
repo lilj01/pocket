@@ -7,7 +7,7 @@ Component({
     /**主题信息 */
     theme:Object,
     /**spu列表 */
-    spuList:[]
+    spuList:Array
   },
 
   /**

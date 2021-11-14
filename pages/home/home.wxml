@@ -21,8 +21,8 @@
 
     <!-- 横屏滚动的spu信息 -->
     <s-spu-scroll
-    wx:if="{{themeE.online}}"
     theme="{{themeE}}"
-    spu-list="{{themeESpus}}"
+    spu-list="{{themeESpu}}"
+    wx:if="{{themeE.online}}"
     />
 </view>
