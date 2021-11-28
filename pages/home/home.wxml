@@ -39,6 +39,7 @@
     <view class="spu-bottom">
         <!-- 静态图片 -->
         <image class="title-spu-bottom" src="/imgs/home/title@interest.png" />
-        <l-water-flow generic:l-water-flow-item="" />
+        <!-- 瀑布流 -->
+        <l-water-flow generic:l-water-flow-item="s-spu-preview" />
     </view>
 </view>

@@ -1,16 +1,26 @@
-import { Activity } from '../../model/activity.js'
-import { Banner } from '../../model/banner.js'
-import { Category } from '../../model/category.js'
-import { SpuPaging } from '../../model/spu-paging.js'
-import { Theme } from '../../model/theme.js'
+import {
+    Activity
+} from '../../model/activity.js'
+import {
+    Banner
+} from '../../model/banner.js'
+import {
+    Category
+} from '../../model/category.js'
+import {
+    SpuPaging
+} from '../../model/spu-paging.js'
+import {
+    Theme
+} from '../../model/theme.js'
 Page({
 
     data: {
         /**主题 位置A */
         themeA: null,
-        themeE:null,
-        themeESpu:null,
-        themeF:null,
+        themeE: null,
+        themeESpu: null,
+        themeF: null,
         /**轮播 位置B */
         bannerB: null,
         /**六宫格 位置C */
@@ -21,13 +31,13 @@ Page({
 
     /* 生命周期函数 onLoad*/
     async onLoad() {
-       this.initAllData()
-       this.initBottomSpuList()
+        this.initAllData()
+        this.initBottomSpuList()
     },
 
     /*加载首页需要的数据 */
     async initAllData() {
-       /**通过面向对象的思想，合并http请求，此处需要实例化Theme对象 */
+        /**通过面向对象的思想，合并http请求，此处需要实例化Theme对象 */
         const themeModel = new Theme()
         await themeModel.getThemes()
         /*位置A的图信息 */
@@ -42,15 +52,15 @@ Page({
 
         /*位置E的图信息 */
         const themeE = await themeModel.getHomeLocationE()
-        
+
         /**E位置的详情及spu信息 */
         let themeESpu = []
         if (themeE.online) {
             const data = await Theme.getHomeLocationESpu()
             if (data) {
-                themeESpu =  data.spu_list.slice(0,8)
+                themeESpu = data.spu_list.slice(0, 8)
             }
-        }       
+        }
 
         /**位置F的信息 */
         const themeF = await themeModel.getHomeLocationF()
@@ -75,10 +85,12 @@ Page({
     /*加载底部spuList */
     async initBottomSpuList() {
         const spuPaging = await SpuPaging.getLatestPaging()
-        const data = spuPaging.getMoreData()
+        const data = await spuPaging.getMoreData()
         if (!data) {
             return
         }
+        /*将数据传递给组件 spu-prewiew*/
+        wx.lin.renderWaterFlow(data.items)
     }
 
 })

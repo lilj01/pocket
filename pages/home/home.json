@@ -1,8 +1,9 @@
 {
-    "usingComponents": {
-        "s-category-grid": "/components/category-grid/index",
-        "s-spu-scroll": "/components/spu-scroll/index",
-        "s-hot-list": "/components/hot-list/index",
-        "l-water-flow": "/miniprogram_npm/lin-ui/water-flow/index"
-    }
+  "usingComponents": {
+    "s-category-grid": "/components/category-grid/index",
+    "s-spu-scroll": "/components/spu-scroll/index",
+    "s-hot-list": "/components/hot-list/index",
+    "s-spu-preview": "/components/spu-preview/index",
+    "l-water-flow": "/miniprogram_npm/lin-ui/water-flow/index"
+  }
 }
