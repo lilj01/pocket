@@ -28,7 +28,8 @@ Page({
         /**活动  位置D */
         activityD: null,
         /**分页封装对象 */
-        spuPaging: null
+        spuPaging: null,
+        loadingType: 'loading'
     },
 
     /* 生命周期函数 onLoad*/
@@ -101,6 +102,11 @@ Page({
         const data = await this.data.spuPaging.getMoreData()
         if (!data) {
             return
+        }
+        if (!data.moreData) {
+            this.setData({
+                loadingType: 'end'
+            })
         }
         /*将数据传递给组件 spu-prewiew*/
         wx.lin.renderWaterFlow(data.items)

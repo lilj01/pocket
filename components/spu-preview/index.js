@@ -21,5 +21,18 @@ Component({
       })
     }
   },
-  methods: {}
+  methods: {
+
+    /**让图片按比例处理显示 */
+    onImgLoad(event) {
+      const {
+        width,
+        height
+      } = event.detail
+      this.setData({
+        w: 340,
+        h: 340 * height / width
+      })
+    }
+  }
 })
