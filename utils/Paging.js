@@ -1,4 +1,6 @@
-import { Http } from "../utils/http";
+import {
+    Http
+} from "../utils/http";
 /*封装分页 */
 class Paging {
 
@@ -74,7 +76,7 @@ class Paging {
     /**是否有更多数据 */
     static _moreData(totalPage, pageNum) {
         /**pageNum 0开始 */
-        return pageNum + 1  < totalPage
+        return pageNum + 1 < totalPage
     }
 
     /**将此次请求添加到累加器 */

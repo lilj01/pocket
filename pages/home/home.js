@@ -26,7 +26,9 @@ Page({
         /**六宫格 位置C */
         grid: [],
         /**活动  位置D */
-        activityD: null
+        activityD: null,
+        /**分页封装对象 */
+        spuPaging: null
     },
 
     /* 生命周期函数 onLoad*/
@@ -85,7 +87,18 @@ Page({
     /*加载底部spuList */
     async initBottomSpuList() {
         const spuPaging = await SpuPaging.getLatestPaging()
+        this.data.spuPaging = spuPaging
         const data = await spuPaging.getMoreData()
+        if (!data) {
+            return
+        }
+        /*将数据传递给组件 spu-prewiew*/
+        wx.lin.renderWaterFlow(data.items)
+    },
+
+    /**触底事件，小程序自带的 */
+    async onReachBottom() {
+        const data = await this.data.spuPaging.getMoreData()
         if (!data) {
             return
         }

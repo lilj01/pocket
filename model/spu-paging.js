@@ -1,4 +1,6 @@
-import { Paging } from "../utils/Paging"
+import {
+    Paging
+} from "../utils/Paging"
 
 class SpuPaging {
 
@@ -6,7 +8,7 @@ class SpuPaging {
     static async getLatestPaging() {
         return new Paging({
             url: `spu/latest`
-        },3)
+        }, 3)
     }
 }
 

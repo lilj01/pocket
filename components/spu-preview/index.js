@@ -5,6 +5,8 @@ Component({
   properties: {
     data: Object
   },
+
+  /**监听data，对tags字符串进行处理，成为一个数组 */
   observers: {
     data: function (data) {
       if (!data) {

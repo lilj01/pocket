@@ -1,7 +1,9 @@
-import { Http } from "../utils/http";
+import {
+    Http
+} from "../utils/http";
 
 /*主题 */
-class Theme{
+class Theme {
     static locationA = 't-1'
     static locationE = 't-2'
     static locationF = 't-3'
@@ -62,4 +64,6 @@ class Theme{
 
 }
 
-export { Theme }
+export {
+    Theme
+}

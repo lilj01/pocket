@@ -1,7 +1,7 @@
 Component({
 
   properties: {
-    banner:Object
+    banner: Object
   },
 
   observers: {

@@ -2,9 +2,9 @@ Component({
 
   properties: {
     /**主题信息 */
-    theme:Object,
+    theme: Object,
     /**spu列表 */
-    spuList:Array
+    spuList: Array
   }
-  
+
 })

@@ -1,7 +1,9 @@
-const { Http } = require("../utils/http");
+const {
+    Http
+} = require("../utils/http");
 
 /**活动 */
-class Activity{
+class Activity {
 
     static locationD = 'a-2'
 
@@ -13,4 +15,6 @@ class Activity{
     }
 }
 
-export { Activity }
+export {
+    Activity
+}

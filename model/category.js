@@ -1,7 +1,9 @@
-const { Http } = require("../utils/http");
+const {
+    Http
+} = require("../utils/http");
 
 /*分类 */
-class Category{
+class Category {
 
     /*获取六宫格信息 分类入口信息*/
     static async getLocationC() {
@@ -11,4 +13,6 @@ class Category{
     }
 }
 
-export { Category }
+export {
+    Category
+}
