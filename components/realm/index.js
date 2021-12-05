@@ -1,5 +1,23 @@
+const {
+  FenceGroup
+} = require("../../models/fence-group")
+
 Component({
-  data: {},
-  properties: {},
+  properties: {
+    spu: Object
+  },
+  data: {
+
+  },
+
+  observers: {
+    'spu': function (spu) {
+      if (!spu) {
+        return
+      }
+      const fenceGroup = new FenceGroup(spu)
+      fenceGroup.initFences()
+    }
+  },
   methods: {}
 })

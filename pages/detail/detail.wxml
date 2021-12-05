@@ -1,1 +1,1 @@
-<view class="container">detail</view>
+<s-realm spu="{{ spu }}"></s-realm>
