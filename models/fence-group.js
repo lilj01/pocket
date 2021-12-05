@@ -16,22 +16,6 @@ class FenceGroup {
   }
 
   /**初始化spec（规格值） */
-  initFences1() {
-    const matrix = this._createMatrix(this.skuList)
-    const fences = []
-    let currentJ = -1;
-    matrix.each((element, i, j) => {
-      if (currentJ !== j) {
-        // 开启一个新列，需要创建一个新的Fence
-        currentJ = j
-        fences[currentJ] = new Fence()
-        // createFence
-      }
-      fences[currentJ].pushValueTitle(element.value)
-    })
-  }
-
-  /**初始化spec（规格值） */
   initFences() {
     const matrix = this._createMatrix(this.skuList)
     const fences = []
@@ -42,6 +26,7 @@ class FenceGroup {
       fence.init()
       fences.push(fence)
     })
+    console.log(fences)
   }
 
   /**创建一个矩阵 */

@@ -1,7 +1,11 @@
+import {
+  Cell
+} from "./cell"
+
 class Fence {
 
   /**规格值 一行 */
-  valueTitles = []
+  cells = []
   specs
 
   constructor(specs) {
@@ -10,14 +14,11 @@ class Fence {
 
   init() {
     this.specs.forEach(element => {
-      this.pushValueTitle(element.value)
+      const cell = new Cell(element)
+      this.cells.push(cell)
     })
   }
 
-  /**将值推进行中 */
-  pushValueTitle(title) {
-    this.valueTitles.push(title)
-  }
 }
 
 export {
