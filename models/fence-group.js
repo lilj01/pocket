@@ -15,6 +15,7 @@ class FenceGroup {
     this.skuList = spu.sku_list
   }
 
+  /**初始化spec（规格值） */
   initFences() {
     const matrix = this._createMatrix(this.skuList)
     const fences = []
@@ -28,7 +29,6 @@ class FenceGroup {
       }
       fences[currentJ].pushValueTitle(element.value)
     })
-    console.log(fences)
   }
 
   /**创建一个矩阵 */
