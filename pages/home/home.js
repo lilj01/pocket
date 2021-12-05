@@ -1,18 +1,18 @@
 import {
     Activity
-} from '../../model/activity.js'
+} from '../../models/activity.js'
 import {
     Banner
-} from '../../model/banner.js'
+} from '../../models/banner.js'
 import {
     Category
-} from '../../model/category.js'
+} from '../../models/category.js'
 import {
     SpuPaging
-} from '../../model/spu-paging.js'
+} from '../../models/spu-paging.js'
 import {
     Theme
-} from '../../model/theme.js'
+} from '../../models/theme.js'
 Page({
 
     data: {
