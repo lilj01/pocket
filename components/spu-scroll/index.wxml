@@ -1,5 +1,6 @@
 <!-- 引入wxs -->
 <wxs src="../../miniprogram_npm/lin-ui/filter/string.wxs" module="s"/>
+<wxs src="../../wxs/price.wxs" module="p"/>
 <view class="container">
     <!-- 图片 -->
     <image src="{{theme.title_img}}" class="title" />
@@ -15,7 +16,7 @@
                     </text>
                     <!-- lin-ui价格组件 -->
                     <l-price
-                    value="{{item.price}}"
+                    value="{{p.mainPrice(item.price,item.discount_price)}}"
                     l-value-class="price-value"
                     l-unit-class="price-unit"
                     />

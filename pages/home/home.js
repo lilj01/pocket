@@ -29,6 +29,7 @@ Page({
         activityD: null,
         /**分页封装对象 */
         spuPaging: null,
+        /**记录lin-ui 的loadmore组建的状态*/
         loadingType: 'loading'
     },
 
