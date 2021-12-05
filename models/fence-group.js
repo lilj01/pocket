@@ -16,7 +16,7 @@ class FenceGroup {
   }
 
   /**初始化spec（规格值） */
-  initFences() {
+  initFences1() {
     const matrix = this._createMatrix(this.skuList)
     const fences = []
     let currentJ = -1;
@@ -31,11 +31,24 @@ class FenceGroup {
     })
   }
 
+  /**初始化spec（规格值） */
+  initFences() {
+    const matrix = this._createMatrix(this.skuList)
+    const fences = []
+    /**矩阵转置 */
+    const at = matrix.transpose()
+    at.forEach(specs => {
+      const fence = new Fence(specs)
+      fence.init()
+      fences.push(fence)
+    })
+  }
+
   /**创建一个矩阵 */
   _createMatrix(skuList) {
     const m = []
-    skuList.forEach(item => {
-      m.push(item.specs)
+    skuList.forEach(sku => {
+      m.push(sku.specs)
     })
     return new Matrix(m)
   }
