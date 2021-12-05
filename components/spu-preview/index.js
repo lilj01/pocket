@@ -21,6 +21,8 @@ Component({
       })
     }
   },
+
+
   methods: {
 
     /**让图片按比例处理显示 */
@@ -33,6 +35,15 @@ Component({
         w: 340,
         h: 340 * height / width
       })
+    },
+
+    /**点击跳转 */
+    onItemTap(event) {
+      const pid = event.currentTarget.dataset.pid
+      wx.navigateTo({
+        url: `/pages/detail/detail?pid=${pid}`
+      })
     }
+
   }
 })

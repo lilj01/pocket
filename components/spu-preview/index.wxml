@@ -1,5 +1,5 @@
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
-<view class="container">
+<view data-pid="{{data.id}}" bind:tap="onItemTap" class="container">
   <!-- 图片展示时使用回调，按比例显示图片 -->
   <image class="img" bind:load="onImgLoad" style="width: {{w}}rpx;height: {{h}}rpx;" mode="widthFix" src="{{data.img}}"/>
   <view class="content-container">
