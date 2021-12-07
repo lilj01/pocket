@@ -1,7 +1,7 @@
 Component({
   data: {},
   properties: {
-    fence: Object
+    cell: Object
   },
   methods: {}
 })

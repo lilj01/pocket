@@ -1,4 +1,10 @@
 <view class="container">
-  <view class="title"></view>
-  <view></view>
+  <!-- spec规格名 -->
+  <view class="title">{{ fence.title }}</view>
+  <view class="row-container">
+    <block wx:for="{{ fence.cells }}" wx:key="{{ index }}">
+      <s-cell class="cell" cell="{{ item }}"></s-cell>
+    </block>
+    <view class="hr"></view>
+  </view>
 </view>

@@ -2,8 +2,9 @@
   <view>
     <image/>
   </view>
-  <block wx:for="{{}}">
-    <s-fence></s-fence>
+  <!-- realm遍历显示fence -->
+  <block wx:for="{{fences}}">
+    <s-fence fence="{{item}}"></s-fence>
   </block>
   <view class="conter-container">
     <!-- <l-conter></l-conter> -->
