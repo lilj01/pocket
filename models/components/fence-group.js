@@ -16,7 +16,7 @@ class FenceGroup {
     this.skuList = spu.sku_list
   }
 
-  /**初始化spec（规格值） */
+  /**初始化spec（规格值） 转置获取到fences*/
   initFences() {
     const matrix = this._createMatrix(this.skuList)
     const fences = []

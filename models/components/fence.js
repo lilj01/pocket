@@ -6,8 +6,11 @@ class Fence {
 
   /**规格值 一行 */
   cells = []
+  /**有效规格 */
   specs
+  /**规格名 如：颜色、尺寸 */
   title
+  /**规格的keyId */
   id
 
   constructor(specs) {
@@ -20,6 +23,7 @@ class Fence {
     this._initCells()
   }
 
+  /**初始化cells，包括去重 */
   _initCells() {
     this.specs.forEach(s => {
       const existed = this.cells.some(c => {
