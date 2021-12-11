@@ -1,10 +1,10 @@
 /**realm：领域 fence：栅栏*/
 const {
   FenceGroup
-} = require("../../models/fence-group")
+} = require("../../models/components/fence-group")
 const {
   Judger
-} = require("../../models/judger")
+} = require("../../models/components/judger")
 
 Component({
   properties: {

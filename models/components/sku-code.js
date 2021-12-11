@@ -1,6 +1,6 @@
 import {
   combination
-} from '../utils/util'
+} from '../../utils/util'
 class SkuCode {
 
   /*sku的code码，可以唯一代表一个商品 */

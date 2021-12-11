@@ -18,6 +18,7 @@ class Judger {
       const skuCode = new SkuCode(sku.code)
       this.pathDict = this.pathDict.concat(skuCode.totalSegments)
     })
+    console.log(this.pathDict)
   }
 
 }
