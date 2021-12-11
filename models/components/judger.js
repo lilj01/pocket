@@ -23,21 +23,22 @@ class Judger {
       const skuCode = new SkuCode(sku.code)
       this.pathDict = this.pathDict.concat(skuCode.totalSegments)
     })
-    console.log(this.pathDict)
   }
 
   /**执行判断的主方法 */
-  judge(cell) {
-    this._changeCellStatus(cell)
+  judge(cell, x, y) {
+    this._changeCellStatus(cell, x, y)
   }
 
   /**反选 */
-  _changeCellStatus(cell) {
+  _changeCellStatus(cell, x, y) {
+    /* 解决非引用传递不能修改cell状态的问题 */
+    const realCell = this.fenceGroup.fences[x].cells[y]
     if (cell.status === CellStatus.WAITING) {
-      cell.status = CellStatus.SELECTED
+      realCell.status = CellStatus.SELECTED
     }
     if (cell.status === CellStatus.SELECTED) {
-      cell.status = CellStatus.WAITING
+      realCell.status = CellStatus.WAITING
     }
   }
 

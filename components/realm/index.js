@@ -37,8 +37,10 @@ Component({
     /* realm组件接受cell向上传递的点击事件 */
     onCellTap(e) {
       const cell = e.detail.cell
+      const x = e.detail.x
+      const y = e.detail.y
       const judger = this.data.judger
-      judger.judge(cell)
+      judger.judge(cell, x, y)
       this.setData({
         fences: judger.fenceGroup.fences
       })

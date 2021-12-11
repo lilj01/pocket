@@ -1,7 +1,8 @@
 Component({
   data: {},
   properties: {
-    fence: Object
+    fence: Object,
+    x: Number
   },
   methods: {}
 })

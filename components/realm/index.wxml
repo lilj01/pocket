@@ -3,8 +3,8 @@
     <image/>
   </view>
   <!-- realm遍历显示fence -->
-  <block wx:for="{{fences}}">
-    <s-fence bind:celltap="onCellTap" fence="{{item}}"></s-fence>
+  <block wx:for="{{fences}}" wx:key="index">
+    <s-fence x="{{index}}" bind:celltap="onCellTap" fence="{{item}}"></s-fence>
   </block>
   <view class="conter-container">
     <!-- <l-conter></l-conter> -->
