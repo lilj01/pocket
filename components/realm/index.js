@@ -11,7 +11,8 @@ Component({
     spu: Object
   },
   data: {
-    fences: []
+    fences: [],
+    judger: Object
   },
 
   observers: {
@@ -22,6 +23,7 @@ Component({
       const fenceGroup = new FenceGroup(spu)
       fenceGroup.initFences()
       const judger = new Judger(fenceGroup)
+      this.data.judger = judger
       this.bindInitData(fenceGroup)
     }
   },
@@ -29,6 +31,16 @@ Component({
     bindInitData(fenceGroup) {
       this.setData({
         fences: fenceGroup.fences
+      })
+    },
+
+    /* realm组件接受cell向上传递的点击事件 */
+    onCellTap(e) {
+      const cell = e.detail.cell
+      const judger = this.data.judger
+      judger.judge(cell)
+      this.setData({
+        fences: judger.fenceGroup.fences
       })
     }
   }

@@ -6,9 +6,11 @@ Component({
   methods: {
     /**点击事件触发的函数 */
     onTap(event) {
-      console.log('cell被点击')
       this.triggerEvent('celltap', {
-
+        cell: this.properties.cell
+      }, {
+        bubbles: true,
+        composed: true
       })
     }
   }

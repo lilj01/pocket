@@ -1,6 +1,9 @@
 const {
   SkuCode
 } = require("./sku-code")
+const {
+  CellStatus
+} = require("../../core/enum")
 
 class Judger {
 
@@ -21,6 +24,21 @@ class Judger {
       this.pathDict = this.pathDict.concat(skuCode.totalSegments)
     })
     console.log(this.pathDict)
+  }
+
+  /**执行判断的主方法 */
+  judge(cell) {
+    this._changeCellStatus(cell)
+  }
+
+  /**反选 */
+  _changeCellStatus(cell) {
+    if (cell.status === CellStatus.WAITING) {
+      cell.status = CellStatus.SELECTED
+    }
+    if (cell.status === CellStatus.SELECTED) {
+      cell.status = CellStatus.WAITING
+    }
   }
 
 }
