@@ -5,6 +5,8 @@ const {
 class Judger {
 
   fenceGroup
+
+  /**可选的sku字典 */
   pathDict = []
 
   constructor(fenceGroup) {
