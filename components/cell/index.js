@@ -3,5 +3,13 @@ Component({
   properties: {
     cell: Object
   },
-  methods: {}
+  methods: {
+    /**点击事件触发的函数 */
+    onTap(event) {
+      console.log('cell被点击')
+      this.triggerEvent('celltap', {
+
+      })
+    }
+  }
 })
