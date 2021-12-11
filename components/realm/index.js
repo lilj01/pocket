@@ -2,6 +2,9 @@
 const {
   FenceGroup
 } = require("../../models/fence-group")
+const {
+  Judger
+} = require("../../models/judger")
 
 Component({
   properties: {
@@ -18,6 +21,7 @@ Component({
       }
       const fenceGroup = new FenceGroup(spu)
       fenceGroup.initFences()
+      const judger = new Judger(fenceGroup)
       this.bindInitData(fenceGroup)
     }
   },
