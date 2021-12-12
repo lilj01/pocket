@@ -30,6 +30,17 @@ class FenceGroup {
     this.fences = fences
   }
 
+  /**遍历cell */
+  eachCell(cb) {
+    for (let x = 0; x < this.fences.length; x++) {
+      const fence = this.fences[x]
+      for (let y = 0; y < fence.cells.length; y++) {
+        const cell = fence.cells[y]
+        cb(cell, x, y)
+      }
+    }
+  }
+
   /**创建一个矩阵 */
   _createMatrix(skuList) {
     const m = []
