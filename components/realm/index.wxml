@@ -1,7 +1,40 @@
+<wxs src="../../wxs/price.wxs" module="p"></wxs>
 <view class="container">
-  <view>
-    <image/>
+  <view class="spu-preview">
+    <!-- 商品图 -->
+    <image src="{{previewImg}}" class="sku-img"/>
+    <view class="sku-description">
+      <text class="title">{{title}}</text>
+      <!-- 价格 -->
+      <view>
+        <view class="price-row">
+          <l-price 
+          value="{{p.mainPrice(price,discountPrice)}}"
+          color="#157658"
+          value-size="28"
+          unit-size="20"
+          autofix
+          ></l-price>
+          <l-price
+          deleted
+          wx:if="{{discountPrice}}"
+          value="{{p.slashedPrice(price,discountPrice)}}"
+          color="#999999"
+          value-size="26"
+          unit-size="20"
+          l-class="discount-price"
+          ></l-price>
+        </view>
+        <view class="sku-pending">
+          <text>请选择：</text>
+        </view>
+      </view>
+    </view>
   </view>
+
+  <!-- 分割线 -->
+  <view class="hr"></view>
+  
   <!-- realm遍历显示fence -->
   <block wx:for="{{fences}}" wx:key="index">
     <s-fence x="{{index}}" bind:celltap="onCellTap" fence="{{item}}"></s-fence>

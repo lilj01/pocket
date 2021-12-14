@@ -12,7 +12,12 @@ Component({
   },
   data: {
     fences: [],
-    judger: Object
+    judger: Object,
+    previewImg: String,
+    title: String,
+    price: String,
+    discountPrice: String
+
   },
 
   observers: {
@@ -24,10 +29,39 @@ Component({
       fenceGroup.initFences()
       const judger = new Judger(fenceGroup)
       this.data.judger = judger
+      const defaultSku = fenceGroup.getDefaultSku()
+      /* 是否存在默认sku，存在优先绑定sku数据，否则绑定spu数据 */
+      if (defaultSku) {
+        this.bindSkuData(defaultSku)
+      } else {
+        this.bindSpuData()
+      }
       this.bindInitData(fenceGroup)
     }
   },
   methods: {
+
+    /* 绑定spu的数据 */
+    bindSpuData() {
+      const spu = this.properties.spu
+      this.setData({
+        previewImg: spu.img,
+        title: spu.title,
+        price: spu.price,
+        discountPrice: spu.discount_price
+      })
+    },
+
+    /* 绑定sku的数据 */
+    bindSkuData(sku) {
+      this.setData({
+        previewImg: sku.img,
+        title: sku.title,
+        price: sku.price,
+        discountPrice: sku.discount_price
+      })
+    },
+
     bindInitData(fenceGroup) {
       this.setData({
         fences: fenceGroup.fences

@@ -1,9 +1,25 @@
+import {
+  Spu
+} from "../spu"
+import {
+  Cell
+} from "./cell"
+
 /* 将选择的规格存在该对象 */
 class SkuPending {
   pending = []
 
   constructor() {
 
+  }
+
+
+  init(sku) {
+    const specs = sku.specs
+    for (let i = 0; i < specs.length; i++) {
+      const cell = new Cell(specs[i])
+      this.insertCell(cell, i)
+    }
   }
 
   /* 添加已选的cell，有顺序 */

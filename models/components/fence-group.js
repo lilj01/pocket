@@ -16,6 +16,29 @@ class FenceGroup {
     this.skuList = spu.sku_list
   }
 
+  /* 获取默认的sku */
+  getDefaultSku() {
+    const defaultSkuId = this.spu.default_sku_id
+    if (!defaultSkuId) {
+      return
+    }
+    return this.skuList.find(s => s.id === defaultSkuId)
+  }
+
+  /* 通过id修改cell状态 */
+  setCellStatusById(cellId, status) {
+    this.eachCell((cell) => {
+      if (cell.id === cellId) {
+        cell.status = status
+      }
+    })
+  }
+
+  /* 通过x y修改cell状态 */
+  setCellStatusByXY(x, y, status) {
+    this.fences[x].cells[y].status = status
+  }
+
   /**初始化spec（规格值） 转置获取到fences*/
   initFences() {
     const matrix = this._createMatrix(this.skuList)

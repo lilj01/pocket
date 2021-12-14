@@ -12,6 +12,7 @@ const {
   CellStatus
 } = require("../../core/enum")
 
+/* 沟通类、本职类 */
 class Judger {
 
   fenceGroup
@@ -27,8 +28,27 @@ class Judger {
   }
 
 
+  /* 初始化sku-pending */
   _initSkuPending() {
-    this.skuPending = new SkuPending
+    this.skuPending = new SkuPending()
+    /* 获取服务器默认需要选中的sku */
+    const defaultSku = this.fenceGroup.getDefaultSku()
+    if (!defaultSku) {
+      return
+    }
+    /* 处理需要默认显示的sku */
+    this.skuPending.init(defaultSku)
+    /* 初始化默认选择的sku（cell） */
+    this._initSelectedCell()
+    /* 默认sku时，状态计算 */
+    this._defalutSkuJudge()
+  }
+
+  /* 初始化默认选择的sku（cell） */
+  _initSelectedCell() {
+    this.skuPending.pending.forEach(cell => {
+      this.fenceGroup.setCellStatusById(cell.id, CellStatus.SELECTED)
+    })
   }
 
   /* 初始化sku数据字典 */
@@ -39,23 +59,30 @@ class Judger {
     })
   }
 
+  /* 默认选中的sku调用 */
+  _defalutSkuJudge() {
+    return this.judge(null, null, null, true)
+  }
+
   /* 执行判断的主方法 */
-  judge(cell, x, y) {
-    /* 对被点击的cell状态进行反选 */
-    this._changeCurrentCellStatus(cell, x, y)
+  judge(cell, x, y, isInit = false) {
+    if (!isInit) {
+      /* 对被点击的cell状态进行反选 */
+      this._changeCurrentCellStatus(cell, x, y)
+    }
+
     /* 对其他cell造成的影响，状态进行重新计算 */
     this.fenceGroup.eachCell((cell, x, y) => {
       const path = this._findPotentialPath(cell, x, y)
-      console.log(path)
       if (!path) {
         return
       }
-      const currentCell = this.fenceGroup.fences[x].cells[y]
+      /* 判断是否在字典，切换状态为禁用或可选 */
       const isIn = this._isInDict(path)
       if (isIn) {
-        currentCell.status = CellStatus.WAITING
+        this.fenceGroup.setCellStatusByXY(x, y, CellStatus.WAITING)
       } else {
-        currentCell.status = CellStatus.FORBIDDEN
+        this.fenceGroup.setCellStatusByXY(x, y, CellStatus.FORBIDDEN)
       }
     })
   }
@@ -99,13 +126,12 @@ class Judger {
   /* 反选 */
   _changeCurrentCellStatus(cell, x, y) {
     /* 解决非引用传递不能修改cell状态的问题 */
-    const realCell = this.fenceGroup.fences[x].cells[y]
     if (cell.status === CellStatus.WAITING) {
-      realCell.status = CellStatus.SELECTED
-      this.skuPending.insertCell(realCell, x)
+      this.fenceGroup.setCellStatusByXY(x, y, CellStatus.SELECTED)
+      this.skuPending.insertCell(cell, x)
     }
     if (cell.status === CellStatus.SELECTED) {
-      realCell.status = CellStatus.WAITING
+      this.fenceGroup.setCellStatusByXY(x, y, CellStatus.WAITING)
       this.skuPending.removeCell(x)
     }
   }
