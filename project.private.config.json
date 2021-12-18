@@ -13,9 +13,15 @@
     "miniprogram": {
       "list": [
         {
-          "name": "",
+          "name": "有规格",
           "pathName": "pages/detail/detail",
           "query": "pid=2",
+          "scene": null
+        },
+        {
+          "name": "无规格",
+          "pathName": "pages/detail/detail",
+          "query": "pid=11",
           "scene": null
         }
       ]

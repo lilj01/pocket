@@ -41,3 +41,23 @@
   height: 2rpx;
   background-color: #e9e9e9;
 }
+
+.stock {
+  margin-left: 30rpx;
+  font-size: 20rpx;
+  color: #999;
+}
+
+.stock-pinch {
+  margin-left: 30rpx;
+  font-size: 20rpx;
+  color: #d20109;
+}
+
+.sku-pending > text:first-child {
+  color: #999;
+}
+
+.sku-pending > text:nth-child(2) {
+  color: #666666;
+}

@@ -27,10 +27,27 @@ class Judger {
     this._initSkuPending()
   }
 
+  isSkuIntact() {
+    return this.skuPending.isIntact()
+  }
+
+  /**获取已经选择的规格值数组 */
+  getCurrentValues() {
+    return this.skuPending.getCurrentSpecValues()
+  }
+
+  /**获取缺失的规格名数组 */
+  getMissingKeys() {
+    const missingKeysIndex = this.skuPending.getMissingSpecKeysIndex()
+    return missingKeysIndex.map(index => {
+      return this.fenceGroup.fences[index].title
+    })
+  }
 
   /* 初始化sku-pending */
   _initSkuPending() {
-    this.skuPending = new SkuPending()
+    const specsLength = this.fenceGroup.fences.length
+    this.skuPending = new SkuPending(specsLength)
     /* 获取服务器默认需要选中的sku */
     const defaultSku = this.fenceGroup.getDefaultSku()
     if (!defaultSku) {
@@ -85,6 +102,12 @@ class Judger {
         this.fenceGroup.setCellStatusByXY(x, y, CellStatus.FORBIDDEN)
       }
     })
+  }
+
+  /**获取确定的sku */
+  getDeterminateSku() {
+    const code = this.skuPending.getSkuCode()
+    return this.fenceGroup.getSku(code)
   }
 
   /* 是否在字典中 */

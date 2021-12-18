@@ -1,10 +1,19 @@
 /**realm：领域 fence：栅栏*/
 const {
+  default: integer
+} = require("../../miniprogram_npm/lin-ui/common/async-validator/validator/integer")
+const {
+  Cell
+} = require("../../models/components/cell")
+const {
   FenceGroup
 } = require("../../models/components/fence-group")
 const {
   Judger
 } = require("../../models/components/judger")
+const {
+  Spu
+} = require("../../models/spu")
 
 Component({
   properties: {
@@ -16,8 +25,10 @@ Component({
     previewImg: String,
     title: String,
     price: String,
-    discountPrice: String
-
+    discountPrice: String,
+    stock: integer,
+    noSpec: Boolean,
+    skuIntact: Boolean
   },
 
   observers: {
@@ -25,6 +36,25 @@ Component({
       if (!spu) {
         return
       }
+      if (Spu.isNoSpec(spu)) {
+        this.processNoSpec(spu)
+      } else {
+        this.processHasSpec(spu)
+      }
+    }
+  },
+  methods: {
+
+    /**无规格信息时执行 */
+    processNoSpec(spu) {
+      this.setData({
+        noSpec: true
+      })
+      this.bindSkuData(spu.sku_list[0])
+    },
+
+    /**有规格信息时执行 */
+    processHasSpec(spu) {
       const fenceGroup = new FenceGroup(spu)
       fenceGroup.initFences()
       const judger = new Judger(fenceGroup)
@@ -36,10 +66,9 @@ Component({
       } else {
         this.bindSpuData()
       }
-      this.bindInitData(fenceGroup)
-    }
-  },
-  methods: {
+      this.bindTipData()
+      this.bindFenceGroupData(fenceGroup)
+    },
 
     /* 绑定spu的数据 */
     bindSpuData() {
@@ -58,11 +87,20 @@ Component({
         previewImg: sku.img,
         title: sku.title,
         price: sku.price,
-        discountPrice: sku.discount_price
+        discountPrice: sku.discount_price,
+        stock: sku.stock
       })
     },
 
-    bindInitData(fenceGroup) {
+    bindTipData() {
+      this.setData({
+        skuIntact: this.data.judger.isSkuIntact(),
+        currentValues: this.data.judger.getCurrentValues(),
+        missingKeys: this.data.judger.getMissingKeys()
+      })
+    },
+
+    bindFenceGroupData(fenceGroup) {
       this.setData({
         fences: fenceGroup.fences
       })
@@ -70,14 +108,21 @@ Component({
 
     /* realm组件接受cell向上传递的点击事件 */
     onCellTap(e) {
-      const cell = e.detail.cell
+      const dataCell = e.detail.cell
       const x = e.detail.x
       const y = e.detail.y
+
+      const cell = new Cell(dataCell.spec)
+      cell.status = dataCell.status
       const judger = this.data.judger
       judger.judge(cell, x, y)
-      this.setData({
-        fences: judger.fenceGroup.fences
-      })
+      const skuIntact = judger.isSkuIntact()
+      if (skuIntact) {
+        const currentSku = judger.getDeterminateSku()
+        this.bindSkuData(currentSku)
+      }
+      this.bindTipData()
+      this.bindFenceGroupData(judger.fenceGroup)
     }
   }
 })

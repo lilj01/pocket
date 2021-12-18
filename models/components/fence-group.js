@@ -34,6 +34,11 @@ class FenceGroup {
     })
   }
 
+  getSku(skuCode) {
+    const fullSkuCode = this.spu.id + '$' + skuCode
+    return this.spu.sku_list.find(s => s.code === fullSkuCode)
+  }
+
   /* 通过x y修改cell状态 */
   setCellStatusByXY(x, y, status) {
     this.fences[x].cells[y].status = status
