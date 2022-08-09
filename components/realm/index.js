@@ -2,6 +2,7 @@
 const {
   default: integer
 } = require("../../miniprogram_npm/lin-ui/common/async-validator/validator/integer")
+const { Cart } = require("../../models/cart")
 const {
   Cell
 } = require("../../models/components/cell")
@@ -28,7 +29,8 @@ Component({
     discountPrice: String,
     stock: integer,
     noSpec: Boolean,
-    skuIntact: Boolean
+    skuIntact: Boolean,
+    currentSkuCount:Cart.SKU_MIN_COUNT
   },
 
   observers: {
@@ -51,6 +53,7 @@ Component({
         noSpec: true
       })
       this.bindSkuData(spu.sku_list[0])
+      this.setStockStatus(spu.sku_list[0].stock,this.data.currentSkuCount)
     },
 
     /**有规格信息时执行 */
@@ -63,6 +66,7 @@ Component({
       /* 是否存在默认sku，存在优先绑定sku数据，否则绑定spu数据 */
       if (defaultSku) {
         this.bindSkuData(defaultSku)
+        this.setStockStatus(defaultSku.stock,this.data.currentSkuCount)
       } else {
         this.bindSpuData()
       }
@@ -106,6 +110,22 @@ Component({
       })
     },
 
+  
+    setStockStatus(stock,currentCount){
+      this.setData({
+        outStock: stock < currentCount
+      })
+    },
+
+    onSelectCount(event) {
+      const currentCount = event.detail.count
+      this.data.currentSkuCount = currentCount
+      if(this.data.judger.isSkuIntact()){
+        const sku = this.data.judger.getDeterminateSku()
+        this.setStockStatus(sku.stock,this.data.currentSkuCount)
+      }
+    },
+
     /* realm组件接受cell向上传递的点击事件 */
     onCellTap(e) {
       const dataCell = e.detail.cell
@@ -120,6 +140,7 @@ Component({
       if (skuIntact) {
         const currentSku = judger.getDeterminateSku()
         this.bindSkuData(currentSku)
+        this.setStockStatus(currentSku.stock,this.data.currentSkuCount)
       }
       this.bindTipData()
       this.bindFenceGroupData(judger.fenceGroup)
