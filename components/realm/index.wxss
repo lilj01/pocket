@@ -2,6 +2,9 @@
   box-sizing: border-box;
   padding: 30rpx;
   background-color: #ffffff;
+  /*sku信息弹出时，规格少的情况可以提升视觉效果 居于屏幕中间显示*/
+  max-height: 500rpx;
+  /* min-height: 700rpx */
 }
 
 .spu-preview {
