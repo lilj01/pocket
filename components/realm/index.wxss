@@ -3,11 +3,15 @@
   padding: 30rpx;
   background-color: #ffffff;
   /*sku信息弹出时，规格少的情况可以提升视觉效果 居于屏幕中间显示*/
-  max-height: 500rpx;
-  /* min-height: 700rpx */
+  max-height: 1000rpx;
+  min-height: 700rpx
 }
 
-.spu-preview {
+.inner-container{
+  padding: 30rpx 30rpx 0rpx 30rpx;
+}
+
+.sku-preview {
   display: flex;
   flex-direction: row;
 }
@@ -65,13 +69,15 @@
   color: #666666;
 }
 
+
+
 .counter-container{
   margin-top: 34rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 200rpx;
+  padding-bottom: 200rpx;
 }
 
 .counter-container text {

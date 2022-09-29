@@ -1,6 +1,7 @@
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
 <scroll-view class="container" scroll-y>
-  <view class="spu-preview">
+  <view class="inner-container">
+    <view class="sku-preview">
     <!-- 商品图 -->
     <image src="{{previewImg}}" class="sku-img"/>
     <view class="sku-description">
@@ -53,10 +54,13 @@
     <text>购买数量</text>
     <s-counter bind:lintap="onSelectCount"></s-counter>
   </view>
+
+  </view>
 </scroll-view>
 
 <view wx:if="{{!outStock}}" class="bottom-btn">
-  <text>加入购物车</text>
+  <text wx:if="{{OrderWay === 'cart'}}">加入购物车</text>
+  <text wx:else>立即购买</text>
 </view>
 
 <view wx:else class="bottom-btn out-stock">

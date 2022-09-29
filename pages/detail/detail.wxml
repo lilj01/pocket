@@ -1,9 +1,9 @@
 <l-popup content-align="bottom" show="{{showRealm}}">
-    <s-realm spu="{{ spu }}"></s-realm>
+    <s-realm spu="{{ spu }}" order-way = "{{OrderWay}}"></s-realm>
 </l-popup>
 
-<s-tabbar class="tabbar" bind:gotohome="onGoToHome"
-          bind:gotocart="onGoToCart"
+<s-tabbar class="tabbar" bind:gotohome="onGotoHome"
+          bind:gotocart="onGotoCart"
           bind:addtocart="onAddToCart"
           bind:buy="onBuy">
 </s-tabbar>

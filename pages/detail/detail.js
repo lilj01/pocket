@@ -1,3 +1,4 @@
+const { ShoppingWay } = require("../../core/enum")
 const {
   Spu
 } = require("../../models/spu")
@@ -9,14 +10,28 @@ Page({
     cartItemCount: 0
   },
 
+  onGotoHome(event){
+    wx.switchTab({
+      url:'/pages/home/home'
+    })
+  },
+
+  onGotoCart(event){
+    wx.switchTab({
+      url:'/pages/cart/cart'
+    })
+  },
+
   onAddToCart(event){
     this.setData({
-      showRealm:true
+      showRealm:true,
+      orderWay:ShoppingWay.CART
     })
   },
   onBuy(event){
     this.setData({
-      showRealm:true
+      showRealm:true,
+      orderWay:ShoppingWay.BUY
     })
   },
 

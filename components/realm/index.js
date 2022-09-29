@@ -18,7 +18,8 @@ const {
 
 Component({
   properties: {
-    spu: Object
+    spu: Object,
+    orderWay:String
   },
   data: {
     fences: [],

@@ -49,13 +49,27 @@ class FenceGroup {
     const matrix = this._createMatrix(this.skuList)
     const fences = []
     /**矩阵转置 */
-    const at = matrix.transpose()
-    at.forEach(specs => {
+    const AT = matrix.transpose()
+    AT.forEach(specs => {
       const fence = new Fence(specs)
       fence.init()
+      if(this._hasSketchFence() && this._isSketchFence(fence.id)){
+        fence.setFenceSkecth(this.skuList)
+      }
       fences.push(fence)
     })
     this.fences = fences
+    console.log(fences)
+  }
+
+  // 有可视规格
+  _hasSketchFence(){
+    return this.spu.sketch_spec_id?true:false;
+  }
+
+  //当前是否可视规格
+  _isSketchFence(fenceId){
+    return this.spu.sketch_spec_id === fenceId;
   }
 
   /**遍历cell */
