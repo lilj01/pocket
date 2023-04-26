@@ -1,4 +1,4 @@
-<l-loadmore show type="{{loadingType}}" end-text="- lilj_01 作品 -">
+<l-loadmore show type="{{loadingType}}" end-text="- LIN 作品 -">
     <view slot="content" class="container">
     <!-- 位置A的图 -->
     <image class="top-theme" src="{{themeA.entrance_img}}" />

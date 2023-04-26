@@ -1,4 +1,7 @@
 const { ShoppingWay } = require("../../core/enum")
+import {SaleExplain} from "../../models/sale-explain";
+import {getWindowHeightRpx} from "../../utils/system";
+
 const {
   Spu
 } = require("../../models/spu")
@@ -21,6 +24,11 @@ Page({
       url:'/pages/cart/cart'
     })
   },
+   onSpecChange(event) {
+        this.setData({
+          specs: event.detail
+        })
+    },
 
   onAddToCart(event){
     this.setData({
@@ -38,8 +46,13 @@ Page({
   async onLoad(options) {
     const pid = options.pid
     const spu = await Spu.getDetail(pid)
+    const explain = await SaleExplain.getFixed()
+    const windowHeight = await getWindowHeightRpx()
+    const h = windowHeight - 100
     this.setData({
-      spu
+      spu,
+      explain,
+      h
     })
   }
 })
