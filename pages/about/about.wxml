@@ -1,0 +1,32 @@
+<view class="container">
+    <image class="top" src="/imgs/logo.png"></image>
+    <view class="next2">
+        <view class="sub-container">
+            <view class="next-inner">
+                <text>作者</text>
+                <view class="block"></view>
+                <text>李立建</text>
+            </view>
+            <view class="next-inner">
+                <text>QQ</text>
+                <view class="block"></view>
+                <text style="color: #666666">158544025</text>
+            </view>
+            <view class="next-inner">
+                <text>微信</text>
+                <view class="block"></view>
+                <text style="color:#666666">lilj_01</text>
+            </view>
+            <view class="next-inner">
+                <text>邮箱</text>
+                <view class="block"></view>
+                <text style="color:#666666">lilj_01@163.com</text>
+            </view>
+            <view class="next-inner">
+                <text>抖音</text>
+                <view class="block"></view>
+                <text style="color:#666666">搜“LIN”</text>
+            </view>
+        </view>
+    </view>
+</view>

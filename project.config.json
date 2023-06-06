@@ -22,9 +22,9 @@
     "uploadWithSourceMap": true,
     "compileHotReLoad": true,
     "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": false,
+    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -43,7 +43,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.20.2",
-  "appid": "wxa13c7e7be9051082",
+  "appid": "wx4cb8e9621950da45",
   "projectname": "pocket",
   "debugOptions": {
     "hidedInDevtools": []

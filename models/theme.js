@@ -62,6 +62,12 @@ class Theme {
         })
     }
 
+    static getForYou() {
+        return Http.request({
+        url: `theme/name/${this.forYou}/with_spu`
+        })
+  }
+
 }
 
 export {

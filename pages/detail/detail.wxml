@@ -13,6 +13,18 @@
     <!-- spu简介 -->
     <s-spu-description spu="{{spu}}"></s-spu-description>
 
+    <view bind:tap="onGoToCouponCenter" class="coupon-container" wx:if="{{coupons.length!=0}}">
+        <view class="coupon-left">
+            <block wx:for="{{coupons}}">
+                <s-coupon-mini text="{{item.title}}"></s-coupon-mini>
+            </block>
+        </view>
+        <view class="coupon-right">
+            <text>立即领取</text>
+            <l-icon name="right" color="#157658" size="24"></l-icon>
+        </view>
+    </view>
+
     <view bind:tap="onAddToCart" wx:if="{{!specs.noSpec}}" class="sku-pending">
         <view class="specs">
             <text wx:if="{{!specs.skuIntact}}">请选择：</text>
@@ -38,10 +50,12 @@
 </scroll-view>
 
 <l-popup content-align="bottom" show="{{showRealm}}">
-    <s-realm bind:specchange="onSpecChange" spu="{{ spu }}" order-way = "{{orderWay}}"></s-realm>
+    <s-realm bind:shopping="onShopping" bind:specchange="onSpecChange" spu="{{ spu }}" order-way = "{{orderWay}}"></s-realm>
 </l-popup>
 
-<s-tabbar class="tabbar" bind:gotohome="onGotoHome"
+<s-tabbar class="tabbar"
+          cart-item-count="{{cartItemCount}}"
+          bind:gotohome="onGotoHome"
           bind:gotocart="onGotoCart"
           bind:addtocart="onAddToCart"
           bind:buy="onBuy">
